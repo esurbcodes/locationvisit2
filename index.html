@@ -1,0 +1,203 @@
+﻿<!DOCTYPE html>
+
+<!-- CREATED BY ETHAN SURBER-->
+
+<!-- BACKGROUND IMAGE FUNCTIONALITY BY MOMENTO 360-->
+<!-- ALL IMAGES TAKEN AND UPLOADED BY JAMES SURBER AND ETHAN SURBER-->
+<!-- ALL RIGHTS RESERVED-->
+<!-- CSCI 435 FINAL PROJECT: IMAGE POWERED VIRTUAL LOCATION VISIT-->
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Blackford parking garage to Purdue CS Office</title>
+    <link href="https://fonts.iu.edu/style.css?family=BentonSans:regular,bold|BentonSansCond:regular|GeorgiaPro:regular" media="screen" rel="stylesheet" type="text/css" />
+    <style>
+        @font-face {
+            font-family: 'BentonSansRegular';
+            src: url('https://fonts.iu.edu/fonts/benton-sans-regular.eot');
+            src: url('https://fonts.iu.edu/fonts/benton-sans-regular.eot?#iefix') format('embedded-opentype'), url('https://fonts.iu.edu/fonts/benton-sans-regular.woff') format('woff'), url('https://fonts.iu.edu/fonts/benton-sans-regular.ttf') format('truetype'), url('https://fonts.iu.edu/fonts/benton-sans-regular.svg#BentonSansRegular') format('svg');
+            font-style: normal;
+            font-weight: normal;
+            font-display: swap;
+        }
+
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        footer {
+            position: fixed;
+            right: 0;
+            bottom: 0px;
+            width: 60px;
+            z-index: 2;
+            text-align: center;
+            background-color: #EDEBEB;
+            font-family: BentonSansRegular;
+            font-size: 10px;
+        }
+
+        .mapimg {
+            position: absolute;
+            padding-left: 1px;
+            margin: 0px;
+            width: 100vw;
+            height: 99.5vh;
+            z-index: -1;
+        }
+
+        .imgcont {
+            position: absolute;
+            padding: -5px;
+            margin: -5px;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+        }
+
+        .flexcont {
+            padding: 5px;
+            margin: 5px;
+            display: flex;
+            flex-direction: row;
+            width: 300px;
+            height: 150px;
+            background-color: black;
+            border: 5px solid antiquewhite;
+            border-radius: 15px;
+            z-index: 2;
+            font-family: BentonSansRegular;
+            color: antiquewhite;
+            text-align: center;
+        }
+
+        .infoarea {
+            padding: 0;
+            margin: 0;
+            position: absolute;
+            background-color: #EDEBFB;
+            height: 100px;
+            width: 170px;
+            top: 60px;
+            border: 2px solid black;
+            color: black;
+            font-family: BentonSansRegular;
+            font-size: 10px;
+        }
+
+        #forarrow {
+            position: fixed;
+            left: 43vw;
+            bottom: 10%;
+            margin: 5px;
+            background-color: #EDEBFB;
+            border-radius: 5px;
+            font-size: 50px;
+            width: 200px;
+            height: 50px;
+            text-align: center;
+            line-height: 10%;
+        }
+
+        #prevarrow {
+            position: fixed;
+            left: 43vw;
+            bottom: 0%;
+            margin: 5px;
+            background-color: #EDEBFB;
+            border-radius: 5px;
+            font-size: 50px;
+            width: 200px;
+            height: 50px;
+            text-align: center;
+            line-height: 0;
+        }
+
+        .minimap {
+            position: fixed;
+            left: 0;
+            bottom: 5px;
+            margin: 5px;
+            width: 200px;
+            height: 200px;
+            border: 5px solid black;
+            border-radius: 15px;
+            box-shadow: 0 0 2px 2px black;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            transition: transform 0.3s ease, left 0.3s ease, bottom 0.3s ease;
+        }
+
+        .minimap:hover {
+            transform: scale(2.5);
+            left: 155px;
+            bottom: 150px;
+        }
+
+        .map {
+            width: 100%;
+            height: 100%;
+            border-radius: 15px;
+        }
+
+        .mapbut {
+            position: absolute;
+            border-radius: 50px;
+            font-family: BentonSansRegular;
+            font-size: 12px;
+            margin: 5px 0;
+            padding: 5px 10px;
+            background-color: #990000;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            transform: scale(0.5);
+        }
+
+        .mapbut:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="imgcont">
+        <iframe class="mapimg" id="mapimg" src="https://momento360.com/e/u/afa11a5b487b45cf934125602c4a71f8?utm_campaign=embed&utm_source=other&heading=69.79&pitch=6.42&field-of-view=75&size=medium&display-plan=true"></iframe>
+    </div>
+    <img id="compass" src="compassE.png" style="position: absolute; z-index: 3; transform: scale(5%); background-color: white; top: -970px; left: 445px; border-radius: 15%; border:5px solid black;"/>
+    <p style ="position: fixed; background-color: white; right: 0; bottom: 30px; font-size: x-small; width: 50px; text-align: center;">Compass heading reflects initial heading</p>
+    <segment class="flexcont">
+        <header> Blackford Garage to CS Department</header>
+        <img class="IU logo" src="purdue.png" style="position: relative; transform: scale(75%); padding-top: 0px; width: 100px; height: 75px; top: 25%;" />
+        <aside class="infoarea">
+            <h1 style="text-decoration: underline;">How to Explore</h1>
+            <div class="title">
+                <p>Select the arrow to move in the direction you would like to go.</p>
+                <p> Click and drag to look around.</p>
+            </div>
+        </aside>
+    </segment>
+    <segment class="minimap">
+        <img class="map" src="map2.png" />
+        <button class="mapbut" id="startbut" style="top: 15px; left: 120px;">Start, 4</button>
+        <button class="mapbut" id="but1" style="top: 28px; left: 130px;">Stairs to 3</button>
+        <button class="mapbut" id="but2" style="top: 32px; left: 100px;">Floor 3</button>
+        <button class="mapbut" id="but3" style="top: 55px; left: 120px;">Tube</button>
+        <button class="mapbut" id="but4" style="top: 76px; left: 110px;">Tube mid</button>
+        <button class="mapbut" id="but5" style="bottom: 65px; left: 110px;">S.E entry</button>
+        <button class="mapbut" id="but6" style="bottom: 50px; left: 90px;">E.E. Office</button>
+        <button class="mapbut" id="but7" style="bottom: 33px; left: 90px;">Hallway to CS</button>
+        <button class="mapbut" id="but8" style="bottom: 15px; left: 90px;">Corner of CS</button>
+        <button class="mapbut" id="but9" style="bottom: 1px; left: 60px;">Door to S. o/ S.</button>
+    </segment>
+    <button id="forarrow">▲</button>
+    <button id="prevarrow">▼</button>
+    <footer>©2024 Surber & Surber</footer>
+    <script src="locationvisit.js"></script>
+
+</body>
+</html>
